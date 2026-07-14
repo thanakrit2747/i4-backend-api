@@ -23,8 +23,11 @@ const SHEETS = {
     labelColumn: 'name',
     columns: [
       { name: 'name', type: 'text' },
-      { name: 'is_prod', type: 'bool' },
-      { name: 'is_support', type: 'bool' },
+      // isProd/isSupport เป็น "number" (0 หรือ 1) ไม่ใช่ boolean — สูตรคำนวณ Band จริงใน
+      // 26-production-rewrite.js/32-band-fix-production.js ใช้ parseFloat(r.isProd) ถ้าเป็น
+      // boolean true/false จะได้ NaN แล้วคะแนนพังทั้งชีท (ตรวจพบจากบั๊กจริงตอน sync ข้ามเครื่อง)
+      { name: 'is_prod', type: 'number' },
+      { name: 'is_support', type: 'number' },
       { name: 'l5_manual', type: 'number' }, { name: 'l6_auto', type: 'number' }, { name: 'l7_semi', type: 'number' },
       { name: 'l8_sw_minutes', type: 'number' }, { name: 'l9_sw_manual', type: 'number' },
       { name: 'l10_sw_auto', type: 'number' }, { name: 'l11_link', type: 'number' },
