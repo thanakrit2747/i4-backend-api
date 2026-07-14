@@ -17,6 +17,9 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
   dateStrings: true, // ให้ DATE/DATETIME กลับมาเป็น string ตรงๆ ไม่แปลงเป็น JS Date (กัน timezone เพี้ยน)
+  decimalNumbers: true, // ให้คอลัมน์ DECIMAL กลับมาเป็น JS number จริง (1) ไม่ใช่ string ("1.000")
+  // ถ้าเป็น string แล้วโค้ด frontend เอาไปบวกกัน (0 + "1.000") จะกลายเป็นการต่อข้อความแทนการบวกเลข
+  // ทำให้คะแนน Band คำนวณผิดไปทั้งระบบ — จุดนี้สำคัญมาก ห้ามเอาออก
   ssl: useSsl ? { rejectUnauthorized: false } : undefined,
 });
 
