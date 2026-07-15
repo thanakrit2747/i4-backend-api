@@ -1,0 +1,20 @@
+{
+  "name": "i4-backend-api",
+  "version": "1.0.0",
+  "description": "REST API backend สำหรับ i4.0 Insight System (Thailand i4.0 Index Assessment) ต่อกับ MySQL",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "morgan": "^1.11.0",
+    "mysql2": "^3.22.6"
+  }
+}
